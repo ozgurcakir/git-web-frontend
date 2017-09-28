@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        {% if commits %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>message</th>
+                    <th>author</th>
+                    <th>committed date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commit in commits %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ commit.message }}</td>
+                    <td>{{ commit.author }}</td>
+                    <td>{{ commit.committed_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alert alert-warning" role="alert">No repository found. Please make sure to add the local repository folder name in the URL.</div>
+			<a href = "http://127.0.0.1:5000/tetris-repo"> Example: http://127.0.0.1:5000/tetris-repo </a>
+		{% endif %}
+    </div>
+</body>
